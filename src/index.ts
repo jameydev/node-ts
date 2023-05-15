@@ -11,9 +11,59 @@ import * as util from './utils.js';
 const app = express();
 const PORT = 3000;
 
-const server = app.listen(PORT, () => {
-    console.log(`Server running on port: ${PORT}`);
+// Generics example
+function logWrapper<Input>(callback: (input: Input) => void) {
+    return (input: Input) => {
+        console.log("Input:", input);
+        callback(input);
+    }
+}
+
+logWrapper<string>(input => {
+    console.log(input.length);
 });
+
+function makePair<Key, Value>(key: Key, value: Value) {
+    return { key, value };
+}
+
+console.log(makePair("abc", 123));
+
+interface Box<T> {
+    inside: T;
+}
+
+let stringyBox: Box<string> = {
+    inside: "abc"
+};
+
+let numberBox: Box<number> = {
+    inside: 42
+};
+
+interface LinkedNode<Value> {
+    next?: LinkedNode<Value>;
+    value: Value;
+}
+
+function getLast<Value>(node: LinkedNode<Value>): Value {
+    return node.next ? getLast(node.next) : node.value; 
+}
+
+let lastDate = getLast({
+    value: new Date("05-15-2023")
+}); // Value type: Date
+
+let lastFruit = getLast({
+    next: {
+        value: "banana"
+    },
+    value: "apple"
+}); // Value type: string
+
+// const server = app.listen(PORT, () => {
+//     console.log(`Server running on port: ${PORT}`);
+// });
 
 // basic stuff - better to use interfaces/classes IRL
 type Poet = {
