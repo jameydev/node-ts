@@ -1,4 +1,4 @@
-export default abstract class School {
+abstract class School {
     readonly name: string;
 
     constructor(name: string) {
@@ -7,3 +7,19 @@ export default abstract class School {
 
     abstract getStudentTypes(): string[];
 }
+
+// example implementation
+class College extends School {
+    getStudentTypes(): string[] {
+        return [
+            "General Studies Majors", 
+            "CS/IT Majors", 
+            "Math Majors", 
+            "Philosophy Majors",
+            "English Majors",
+            "Art Majors"
+        ];
+    }
+}
+
+export { School, College };
