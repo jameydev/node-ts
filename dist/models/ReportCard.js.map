@@ -1,0 +1,1 @@
+{"version":3,"file":"ReportCard.js","sourceRoot":"","sources":["../../src/models/ReportCard.ts"],"names":[],"mappings":"AAGA,MAAM,CAAC,OAAO,OAAO,UAAU;IAG3B,YAAY,MAAgB;QACxB,IAAI,CAAC,MAAM,GAAG,MAAM,CAAC;IACzB,CAAC;IAED,MAAM;QACF,OAAO,IAAI,CAAC,MAAM,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;IAClC,CAAC;CACJ"}
