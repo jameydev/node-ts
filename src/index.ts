@@ -61,6 +61,41 @@ let lastFruit = getLast({
     value: "apple"
 }); // Value type: string
 
+class Secret<Key, Value> {
+    key: Key;
+    value: Value;
+
+    constructor(key: Key, value: Value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    getValue(key: Key) {
+        return this.key === key 
+               ? this.value
+               : undefined;
+    }
+}
+
+class CurriedCallback<Input> {
+    #callback: (input: Input) => void;
+
+    constructor(callback: (input: Input) => void) {
+        this.#callback = (input: Input) => {
+            console.log("Input:", input);
+            callback(input);
+        };
+    }
+
+    call(input: Input) {
+        this.#callback(input);
+    }
+}
+
+let curriedCallback = new CurriedCallback<string>(input => {
+    console.log(input.length);
+});
+
 // const server = app.listen(PORT, () => {
 //     console.log(`Server running on port: ${PORT}`);
 // });
