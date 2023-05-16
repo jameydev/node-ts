@@ -73,6 +73,11 @@ _CurriedCallback_callback = new WeakMap();
 let curriedCallback = new CurriedCallback(input => {
     console.log(input.length);
 });
+class Quote {
+    constructor(lines) {
+        this.lines = lines;
+    }
+}
 const virgil = {
     born: 1994,
     name: 'Virgil Mk. 2'

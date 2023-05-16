@@ -96,6 +96,14 @@ let curriedCallback = new CurriedCallback<string>(input => {
     console.log(input.length);
 });
 
+class Quote<T> {
+    lines: T;
+
+    constructor(lines: T) {
+        this.lines = lines;
+    }
+}
+
 // const server = app.listen(PORT, () => {
 //     console.log(`Server running on port: ${PORT}`);
 // });
