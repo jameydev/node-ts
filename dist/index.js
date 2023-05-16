@@ -78,6 +78,24 @@ class Quote {
         this.lines = lines;
     }
 }
+class SpokenQuote extends Quote {
+    speak() {
+        console.log(this.lines.join("\n"));
+    }
+}
+class AttributedQuote extends Quote {
+    constructor(value, speaker) {
+        super(value);
+        this.speaker = speaker;
+    }
+}
+class MoviePart {
+    constructor(role, speaking) {
+        this.role = role;
+        this.speaking = speaking;
+    }
+}
+const part = new MoviePart("Frodo Baggins", true);
 const virgil = {
     born: 1994,
     name: 'Virgil Mk. 2'

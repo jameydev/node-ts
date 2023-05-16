@@ -104,6 +104,37 @@ class Quote<T> {
     }
 }
 
+class SpokenQuote extends Quote<string[]> {
+    speak() {
+        console.log(this.lines.join("\n"));
+    }
+}
+
+class AttributedQuote<Value> extends Quote<Value> {
+    speaker: string;
+
+    constructor(value: Value, speaker: string) {
+        super(value);
+        this.speaker = speaker;
+    }
+}
+
+interface ActingCredit<Role> {
+    role: Role;
+}
+
+class MoviePart implements ActingCredit<string> {
+    role: string;
+    speaking: boolean;
+
+    constructor(role: string, speaking: boolean) {
+        this.role = role;
+        this.speaking = speaking;
+    }
+}
+
+const part = new MoviePart("Frodo Baggins", true);
+
 // const server = app.listen(PORT, () => {
 //     console.log(`Server running on port: ${PORT}`);
 // });
