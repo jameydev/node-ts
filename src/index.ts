@@ -9,6 +9,7 @@ import * as grade from "./models/GradeCounter.js";
 import * as util from './utils.js';
 import Secret from "./Secret.js";
 import getLast from "./LinkedNode.js";
+import MoviePart from "./models/MoviePart.js";
 
 const app = express();
 const PORT = 3000;
@@ -18,17 +19,9 @@ const secretCodeLol = new Secret("abcd", 1234);
 console.log(secretCodeLol.getValue("abcd"));
 
 // Generics examples
-function logWrapper<Input>(callback: (input: Input) => void) {
-    return (input: Input) => {
-        console.log("Input:", input);
-        callback(input);
-    }
-}
-
-logWrapper<string>(input => {
+util.logWrapper<string>(input => {
     console.log(input.length);
 });
-
 
 console.log(util.makePair("abc", 123));
 
@@ -55,40 +48,9 @@ let lastFruit = getLast({
     value: "apple"
 }); // Value type: string
 
-class CurriedCallback<Input> {
-    #callback: (input: Input) => void;
-
-    constructor(callback: (input: Input) => void) {
-        this.#callback = (input: Input) => {
-            console.log("Input:", input);
-            callback(input);
-        };
-    }
-
-    call(input: Input) {
-        this.#callback(input);
-    }
-}
-
-let curriedCallback = new CurriedCallback<string>(input => {
+let curriedCallback = new util.CurriedCallback<string>(input => {
     console.log(input.length);
 });
-
-
-
-interface ActingCredit<Role> {
-    role: Role;
-}
-
-class MoviePart implements ActingCredit<string> {
-    role: string;
-    speaking: boolean;
-
-    constructor(role: string, speaking: boolean) {
-        this.role = role;
-        this.speaking = speaking;
-    }
-}
 
 const part = new MoviePart("Frodo Baggins", true);
 
@@ -97,10 +59,6 @@ type CreatesValue<Input, Output> = (input: Input) => Output;
 let creator: CreatesValue<string, number>;
 
 creator = text => text.length;
-
-function get<T, Key extends keyof T>(container: T, key: Key) {
-    return container[key];
-}
 
 // const server = app.listen(PORT, () => {
 //     console.log(`Server running on port: ${PORT}`);

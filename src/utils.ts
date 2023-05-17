@@ -14,8 +14,37 @@ function makePair<Key, Value>(key: Key, value: Value) {
     return { key, value };
 }
 
+class CurriedCallback<Input> {
+    #callback: (input: Input) => void;
+
+    constructor(callback: (input: Input) => void) {
+        this.#callback = (input: Input) => {
+            console.log("Input:", input);
+            callback(input);
+        };
+    }
+
+    call(input: Input) {
+        this.#callback(input);
+    }
+}
+
+function logWrapper<Input>(callback: (input: Input) => void) {
+    return (input: Input) => {
+        console.log("Input:", input);
+        callback(input);
+    }
+}
+
+function get<T, Key extends keyof T>(container: T, key: Key) {
+    return container[key];
+}
+
 export { 
     createDate, 
     firstCharAndSize, 
-    makePair 
+    makePair,
+    CurriedCallback,
+    logWrapper,
+    get
 };
