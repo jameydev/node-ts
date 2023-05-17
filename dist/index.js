@@ -12,9 +12,13 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 var _CurriedCallback_callback;
 import express from "express";
 import * as util from './utils.js';
+import Secret from "./Secret.js";
+import getLast from "./LinkedNode.js";
 const app = express();
 const PORT = 3000;
-// Generics example
+const secretCodeLol = new Secret("abcd", 1234);
+console.log(secretCodeLol.getValue("abcd"));
+// Generics examples
 function logWrapper(callback) {
     return (input) => {
         console.log("Input:", input);
@@ -24,19 +28,13 @@ function logWrapper(callback) {
 logWrapper(input => {
     console.log(input.length);
 });
-function makePair(key, value) {
-    return { key, value };
-}
-console.log(makePair("abc", 123));
+console.log(util.makePair("abc", 123));
 let stringyBox = {
     inside: "abc"
 };
 let numberBox = {
     inside: 42
 };
-function getLast(node) {
-    return node.next ? getLast(node.next) : node.value;
-}
 let lastDate = getLast({
     value: new Date("05-15-2023")
 }); // Value type: Date
@@ -46,17 +44,6 @@ let lastFruit = getLast({
     },
     value: "apple"
 }); // Value type: string
-class Secret {
-    constructor(key, value) {
-        this.key = key;
-        this.value = value;
-    }
-    getValue(key) {
-        return this.key === key
-            ? this.value
-            : undefined;
-    }
-}
 class CurriedCallback {
     constructor(callback) {
         _CurriedCallback_callback.set(this, void 0);

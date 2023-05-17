@@ -6,5 +6,8 @@ function createDate(monthOrTimestamp, day, year) {
 function firstCharAndSize(input) {
     return [input[0], input.length]; // type: (string | number)[]
 }
-export { createDate, firstCharAndSize };
+function makePair(key, value) {
+    return { key, value };
+}
+export { createDate, firstCharAndSize, makePair };
 //# sourceMappingURL=utils.js.map

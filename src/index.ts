@@ -7,11 +7,17 @@ import Book from "./models/Book.js";
 import ReportCard from "./models/ReportCard.js";
 import * as grade from "./models/GradeCounter.js";
 import * as util from './utils.js';
+import Secret from "./Secret.js";
+import getLast from "./LinkedNode.js";
 
 const app = express();
 const PORT = 3000;
 
-// Generics example
+const secretCodeLol = new Secret("abcd", 1234);
+
+console.log(secretCodeLol.getValue("abcd"));
+
+// Generics examples
 function logWrapper<Input>(callback: (input: Input) => void) {
     return (input: Input) => {
         console.log("Input:", input);
@@ -23,11 +29,8 @@ logWrapper<string>(input => {
     console.log(input.length);
 });
 
-function makePair<Key, Value>(key: Key, value: Value) {
-    return { key, value };
-}
 
-console.log(makePair("abc", 123));
+console.log(util.makePair("abc", 123));
 
 interface Box<T> {
     inside: T;
@@ -41,15 +44,6 @@ let numberBox: Box<number> = {
     inside: 42
 };
 
-interface LinkedNode<Value> {
-    next?: LinkedNode<Value>;
-    value: Value;
-}
-
-function getLast<Value>(node: LinkedNode<Value>): Value {
-    return node.next ? getLast(node.next) : node.value; 
-}
-
 let lastDate = getLast({
     value: new Date("05-15-2023")
 }); // Value type: Date
@@ -60,22 +54,6 @@ let lastFruit = getLast({
     },
     value: "apple"
 }); // Value type: string
-
-class Secret<Key, Value> {
-    key: Key;
-    value: Value;
-
-    constructor(key: Key, value: Value) {
-        this.key = key;
-        this.value = value;
-    }
-
-    getValue(key: Key) {
-        return this.key === key 
-               ? this.value
-               : undefined;
-    }
-}
 
 class CurriedCallback<Input> {
     #callback: (input: Input) => void;

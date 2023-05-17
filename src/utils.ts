@@ -10,4 +10,12 @@ function firstCharAndSize(input: string) {
     return [input[0], input.length]; // type: (string | number)[]
 }
 
-export { createDate, firstCharAndSize };
+function makePair<Key, Value>(key: Key, value: Value) {
+    return { key, value };
+}
+
+export { 
+    createDate, 
+    firstCharAndSize, 
+    makePair 
+};
