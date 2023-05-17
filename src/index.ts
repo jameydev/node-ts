@@ -119,6 +119,10 @@ let creator: CreatesValue<string, number>;
 
 creator = text => text.length;
 
+function get<T, Key extends keyof T>(container: T, key: Key) {
+    return container[key];
+}
+
 // const server = app.listen(PORT, () => {
 //     console.log(`Server running on port: ${PORT}`);
 // });
