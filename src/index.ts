@@ -113,6 +113,12 @@ class MoviePart implements ActingCredit<string> {
 
 const part = new MoviePart("Frodo Baggins", true);
 
+type CreatesValue<Input, Output> = (input: Input) => Output;
+
+let creator: CreatesValue<string, number>;
+
+creator = text => text.length;
+
 // const server = app.listen(PORT, () => {
 //     console.log(`Server running on port: ${PORT}`);
 // });
