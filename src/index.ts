@@ -38,6 +38,9 @@ let numberBox: Box<number> = {
     inside: 42
 };
 
+console.log(`Stringy Box contains: ${stringyBox.inside}`);
+console.log(`Number Box contains: ${numberBox.inside}`)
+
 let lastDate = getLast({
     value: new Date("05-15-2023")
 }); // Value type: Date
@@ -49,24 +52,32 @@ let lastFruit = getLast({
     value: "apple"
 }); // Value type: string
 
+console.log(lastDate.toLocaleDateString());
+console.log(lastFruit);
+
 let curriedCallback = new util.CurriedCallback<string>(input => {
     console.log(input.length);
 });
 
 const part = new MoviePart("Frodo Baggins", true);
 
+console.log(part.role);
+
 type CreatesValue<Input, Output> = (input: Input) => Output;
 
 let creator: CreatesValue<string, number>;
 
 creator = text => text.length;
+let cIn = "salad bar";
+console.log(creator(cIn));
 
 const character: Character = {
     catchphrase: "Yee-haw!",
     name: "Sandy Cheeks"
 };
 
-console.log(`${character.name} says ${character.catchphrase}`);
+console.log(`${character.name} says ${character.catchphrase}\n`);
+
 // const server = app.listen(PORT, () => {
 //     console.log(`Server running on port: ${PORT}`);
 // });
