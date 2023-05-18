@@ -1,5 +1,6 @@
 import express from "express";
 import * as exphbs from "express-handlebars";
+import path, { dirname } from "path";
 
 // My random stuff from the oreilly typescript book
 import ErrMsg from "./models/ErrMsg.js";
@@ -14,6 +15,15 @@ import { Character } from "./types.js";
 
 const app = express();
 const PORT = 3000;
+
+// app.get("/", );
+
+const server = app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
+
+// =================== CRAP BELOW: 
 
 const secretCodeLol = new Secret("abcd", 1234);
 

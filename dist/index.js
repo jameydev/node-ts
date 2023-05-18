@@ -5,6 +5,11 @@ import getLast from "./LinkedNode.js";
 import MoviePart from "./models/MoviePart.js";
 const app = express();
 const PORT = 3000;
+// app.get("/", );
+const server = app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+// =================== CRAP BELOW: 
 const secretCodeLol = new Secret("abcd", 1234);
 console.log(secretCodeLol.getValue("abcd"));
 // Generics examples
