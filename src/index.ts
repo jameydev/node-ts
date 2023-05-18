@@ -69,7 +69,7 @@ let creator: CreatesValue<string, number>;
 
 creator = text => text.length;
 let cIn = "salad bar";
-console.log(creator(cIn));
+console.log(`Length of string \"${cIn}\" is ${creator(cIn)} characters`);
 
 const character: Character = {
     catchphrase: "Yee-haw!",

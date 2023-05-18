@@ -39,7 +39,7 @@ console.log(part.role);
 let creator;
 creator = text => text.length;
 let cIn = "salad bar";
-console.log(creator(cIn));
+console.log(`Length of string \"${cIn}\" is ${creator(cIn)} characters`);
 const character = {
     catchphrase: "Yee-haw!",
     name: "Sandy Cheeks"
