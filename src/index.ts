@@ -10,6 +10,7 @@ import * as util from './utils.js';
 import Secret from "./Secret.js";
 import getLast from "./LinkedNode.js";
 import MoviePart from "./models/MoviePart.js";
+import { Character } from "./types.js";
 
 const app = express();
 const PORT = 3000;
@@ -60,6 +61,12 @@ let creator: CreatesValue<string, number>;
 
 creator = text => text.length;
 
+const character: Character = {
+    catchphrase: "Yee-haw!",
+    name: "Sandy Cheeks"
+};
+
+console.log(`${character.name} says ${character.catchphrase}`);
 // const server = app.listen(PORT, () => {
 //     console.log(`Server running on port: ${PORT}`);
 // });

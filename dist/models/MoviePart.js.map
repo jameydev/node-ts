@@ -1,0 +1,1 @@
+{"version":3,"file":"MoviePart.js","sourceRoot":"","sources":["../../src/models/MoviePart.ts"],"names":[],"mappings":"AAIA,MAAM,CAAC,OAAO,OAAO,SAAS;IAI1B,YAAY,IAAY,EAAE,QAAiB;QACvC,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;QACjB,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAC;IAC7B,CAAC;CACJ"}
